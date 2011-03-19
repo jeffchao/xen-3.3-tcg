@@ -1,0 +1,77 @@
+????-??-?? Intel Corp
+	* Moved module out of kernel to run as a ring 3 app
+	* Modified save_to_file and load_from_file to call xen VTPM manager
+
+2006-06-23  Mario Strasser <mast@gmx.net>
+	* tpm_startup.c: behaviour of ST_CLEAR and storage of
+		persistent data adapted
+
+2006-06-18  Heiko Stamer <stamer@gaos.org>
+	* tpm_identity.c: identity creation and activation,
+		that is TPM_MakeIdentity and TPM_ActivateIdentity added
+
+
+2005-12-24  Mario Strasser <mast@gmx.net>
+	* tpm_transport.c, tpm_marshalling.c, tpm_structures.h:
+		Transport session functionality added
+
+
+2005-12-16  Mario Strasser <mast@gmx.net>
+	* linux_module.c: ioctl() support added
+	* tpm_capability.c: TPM_GetCapability() adapted to make
+		it work with trousers
+
+
+2005-12-09  Heiko Stamer <stamer@gaos.org>
+	* tpm_marshalling.c, tpm_daa.c, rsa.c: DAA functionality,
+		that is TPM_DAA_Join and TPM_DAA_Sign added
+
+
+2005-08-15  Mario Strasser <mast@gmx.net>
+	* all: some typos corrected
+	* tpm_integrity.c: bug in TPM_Extend fixed
+
+
+2005-05-07  Mario Strasser <mast@gmx.net>
+	* bug in TPM_SaveContext fixed
+
+
+2005-04-30  Mario Strasser <mast@gmx.net>
+	* tpm_digest.c: audit functionality added
+ 
+
+2005-04-29  Mario Strasser  <mast@gmx.net>
+	* tpm_context.c: TPM_KeyControlOwner, TPM_SaveContext, 
+		and TPM_LoadContext added
+	* tpm_deprecated: TPM_(Save|Load)(Key|Auth)Context added
+	* rc4.[ch]: RC4 encryption added
+	* rsa.c: rsa_copy_key added
+
+
+2005-04-27  Mario Strasser  <mast@gmx.net>
+	* tpm_crypto.c: TPM_CertifyKey and TPM_CertifyKey2 added
+	* tpm_deprecated: TPM_OwnerReadPubek, TPM_CertifySelfTest,
+		TPM_DirWriteAuth, and TPM_DirRead added
+
+
+2005-04-26  Mario Strasser  <mast@gmx.net>
+	* tpm_ticks.c: timing ticks functionality added
+	* tpm_authorization.c: TPM_ChangeAuth and TPM_ChangeAuthOwner added
+	* tpm_storage, tpm_crypto.c, tpm_integrity.c: authorization 
+		verification now considers the value of authDataUsage
+	* tpm_storage: TPM_UnBind added
+
+
+2004-10-24  Mario Strasser  <mast@gmx.net>
+	
+	* Makefile: new makefile for Linux kernels > 2.5.0 build system
+	* tpm_testing.c: replacement of some floating-point calculations 
+		with fix-point arithmetic 
+	* all: minor changes int the directory and header file structure
+	       	to make the package easier portable and maintainable 
+
+
+2004-07-01  Mario Strasser  <mast@gmx.net>  
+
+	* Initial release based on my semester thesis
+

@@ -1,0 +1,29 @@
+From df8d6537d7947cbe6fd8176b19e38fd45eef7313 Mon Sep 17 00:00:00 2001
+From: David Edmondson <dme@dme.org>
+Date: Thu, 22 Jan 2009 12:19:21 -0500
+Subject: [PATCH] [core] Fix wrapping of tftp block index
+
+Handle wrapping of the tftp block index correctly by ensuring that we
+compare unsigned shorts when examining block index numbers.
+
+Signed-off-by: Marty Connor <mdc@etherboot.org>
+---
+ src/core/nic.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/core/nic.c b/src/core/nic.c
+index 6aaa8e2..90dec41 100644
+--- a/src/core/nic.c
++++ b/src/core/nic.c
+@@ -828,7 +828,7 @@ int tftp_block ( struct tftpreq_info_t *request, struct tftpblk_info_t *block )
+ 			}
+ 		} break;
+ 		case TFTP_DATA :
+-			if ( ntohs(rcvd->u.data.block) != ( blockidx + 1 ) )
++			if ( ntohs(rcvd->u.data.block) != (unsigned short)( blockidx + 1 ) )
+ 				break; /* Re-ACK last block sent */
+ 			if ( recvlen > ( blksize+sizeof(rcvd->u.data.block) ) )
+ 				break; /* Too large; ignore */
+-- 
+1.5.6.3
+

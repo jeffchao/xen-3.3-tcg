@@ -1,0 +1,1 @@
+dsdt.o: dsdt.c
